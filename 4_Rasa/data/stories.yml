@@ -1,0 +1,30 @@
+version: "3.1"
+
+stories:
+
+# - story: happy path
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: mood_great
+#   - action: utter_happy
+
+- story: greet scenario
+  steps:
+  - intent: greet
+  - action: ask_sam
+  # - intent: mood_unhappy
+  # - action: utter_cheer_up
+  # - action: utter_did_that_help
+  # - intent: affirm
+  # - action: utter_happy
+
+- story: interaction with sam 
+  steps:
+  - intent: list_all_known_activities
+  - action: ask_sam
+
+# - story: c2
+  # steps:
+  # - intent: SubActivity_List
+  # - action: ask_sam

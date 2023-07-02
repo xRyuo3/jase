@@ -1,0 +1,54 @@
+version: "3.1"
+
+intents:
+  - affirm
+  - gooodbye
+  - greet
+  - deny
+  - list_all_known_activities
+  - sub_task_of_given_activity
+  - details_all_known_activities
+  - details_specific_activity
+  - successor_of_sub_task_at_given_step
+  - successor_of_given_sub_task
+  - precondition_of_sub_task_at_given_step
+  - precondition_of_given_sub_task
+
+responses:
+  utter_greet: 
+  - text: "Hi! What would you like to do?"
+  - text: "Hi! How can I help you? "
+  utter_goodbye:
+  - text: "Bye"
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+# definition of custom actions
+actions:
+  - ask_sam
+
+entities:
+  - activity
+  - subactivity
+  - taskNbr
+
+slots:
+  activitySlot:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: activity 
+  subActivitySlot:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: subactivity
+  taskNbrSlot:
+      type: any
+      mappings:
+        - type: from_entity
+          entity: taskNbr
+  
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

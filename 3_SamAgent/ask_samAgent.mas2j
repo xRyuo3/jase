@@ -1,0 +1,22 @@
+/*
+    ask_sem
+    ---------------------------
+
+    Jason Project File
+
+    This file defines the initial state of the MAS
+
+    Jason 2.5.1
+    April 26, 2023 - 11:03:15
+*/
+
+MAS ask_sem {
+
+    infrastructure: Local
+    environment: DialogueEnv
+ 
+    agents:   
+
+    samAgent ./samAgent.asl
+    beliefBaseClass jason.bb.TextPersistentBB;
+}

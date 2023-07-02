@@ -1,0 +1,139 @@
+version: "3.1"
+
+nlu:
+# Conventions between humans # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+- intent: list_all_known_activities
+  examples: |
+    - What activities do you know?
+    - What activities are you familiar with?
+    - Which activities do you have knowledge about?
+    - Can you provide a list of activities you know?
+    - What kinds of activities are you acquainted with?
+    - Do you have information about any specific activities? 
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+- lookup: activity
+  examples: |
+    - cook pasta
+    - prepare seasoning
+    - initial tests
+    - telemaco Recovery Process
+    - teseo recovery Process
+    - enroll university
+
+- intent: sub_task_of_given_activity
+  examples: |
+    - how can I [cook_pasta](activity)?
+    - what I need to do to pass [initial_tests](activity)?
+    - how to [cook_pasta](activity)?
+    - can you explain me how to [cook_pasta](activity)?
+    - I want to [cook_pasta](activity)?
+    - Teach me how to [cook_pasta](activity)?
+    - I want to [loss_weight](activity)?
+    - teach me to [prepare_seasoning](activity)?
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+- intent: details_all_known_activities
+  examples: |
+    - provide me a description of all your activities?
+    - give me some details about those activities?
+
+- intent: details_specific_activity
+  examples: |
+    - give me some details about [cook_pasta](activity)
+    - details about [cook_pasta](activity)
+    - what is [telemaco](activity)?
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+- regex: taskNbr
+  examples: |
+    - \d*
+
+
+
+- intent: precondition_of_sub_task_at_given_step
+  examples: |
+    - can you plese provide me the step that i must follow in order to complete the task [1](taskNbr)?
+    - provide me the precondition of task [3](taskNbr)?
+
+- intent: successor_of_sub_task_at_given_step
+  examples: |
+    - can you give me the step after [1](taskNbr)? 
+    - what i have to do after step [2](taskNbr)?
+
+- lookup: subactivity
+  examples: |
+    - add_pasta
+    - add_salt
+    - add_water
+    - boil_water
+    - cook_pasta
+    - drain_pasta
+    - grate_parmesan
+    - mix
+    - initalTests
+
+- intent: successor_of_given_sub_task
+  examples: |
+    - what i have to do after [add_pasta](subactivity)?
+    - what i have to do after [boil_water](subactivity)?
+    - what i have to do after [grate_parmesan](subactivity)?
+
+- intent: precondition_of_given_sub_task
+  examples: |
+    - what i have to do before [add_pasta](subactivity)?
+    - what i have to do before [boil_water](subactivity)?
+    - what i have to do before [grate_parmesan](subactivity)?
+    - i have to do something before [grate_parmesan](subactivity)?

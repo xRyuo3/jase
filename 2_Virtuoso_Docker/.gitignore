@@ -1,0 +1,6 @@
+### runtime-created files
+
+data/*.bz2
+data/*.graph
+data/download.lck
+virtuoso/
